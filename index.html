@@ -22,21 +22,27 @@
   #ld.off{opacity:0;pointer-events:none}
   .sp{width:42px;height:42px;border:4px solid #ffffff44;border-top-color:#18b4d4;border-radius:50%;margin:0 auto 14px;animation:r 1s linear infinite}
   @keyframes r{to{transform:rotate(360deg)}}
-  #ld a{color:#7fe0f5;font-size:13px}
 </style>
 </head>
 <body>
-  <div id="ld"><div><div class="sp"></div>Memuat aplikasi…<br><br><a id="direct" target="_blank" rel="noopener">Tidak muncul? Buka langsung</a></div></div>
+  <div id="ld"><div><div class="sp"></div><span id="msg">Memuat aplikasi…</span></div></div>
   <iframe id="app" title="Arsip & Data BPD Desa Baleharjo" allow="clipboard-write; fullscreen"></iframe>
 <script>
   // ⬇️ GANTI dengan URL Web App dari Apps Script (Deploy → Manage deployments), berakhiran /exec
   const GAS_URL = "https://script.google.com/macros/s/AKfycbwOVAgc7AYCqSNnu-2ym-TLplMA_hrWH2nQZaG4KRT3AZAaa3W3u9kpRNf5emeaWK82Fg/exec";
 
-  const f = document.getElementById('app');
-  f.src = GAS_URL;
-  document.getElementById('direct').href = GAS_URL;
-  f.addEventListener('load', () => document.getElementById('ld').classList.add('off'));
-  setTimeout(() => document.getElementById('ld').classList.add('off'), 8000);
+  const f = document.getElementById('app'), ld = document.getElementById('ld'), msg = document.getElementById('msg');
+  let loaded = false, tries = 0;
+  function start() {
+    loaded = false;
+    f.src = tries === 0 ? GAS_URL : GAS_URL + (GAS_URL.includes('?') ? '&' : '?') + '_=' + Date.now();
+    clearTimeout(start.t);
+    // belum selesai dimuat dalam 15 detik → otomatis muat ulang
+    start.t = setTimeout(() => { if (!loaded) { tries++; msg.textContent = 'Memuat ulang…'; start(); } }, 15000);
+  }
+  f.addEventListener('load', () => { loaded = true; clearTimeout(start.t); ld.classList.add('off'); });
+  window.addEventListener('online', () => { if (!loaded) { msg.textContent = 'Memuat ulang…'; start(); } });
+  start();
   if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(()=>{}));
 </script>
 </body>
