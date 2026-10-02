@@ -4,7 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#04364f">
-<title>Arsip & Data BPD Desa Baleharjo</title>
+<title>E-Arsip BPD Desa Baleharjo</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/icons/favicon-48.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<meta name="application-name" content="E-Arsip BPD">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="E-Arsip BPD">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>
   html,body{margin:0;height:100%;background:#04364f;overflow:hidden;font-family:'Segoe UI',Roboto,Arial,sans-serif}
   iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#eaf5f9}
@@ -27,6 +37,7 @@
   document.getElementById('direct').href = GAS_URL;
   f.addEventListener('load', () => document.getElementById('ld').classList.add('off'));
   setTimeout(() => document.getElementById('ld').classList.add('off'), 8000);
+  if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(()=>{}));
 </script>
 </body>
 </html>

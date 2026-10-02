@@ -1,0 +1,19 @@
+{
+  "id": "/",
+  "name": "E-Arsip BPD Desa Baleharjo",
+  "short_name": "E-Arsip BPD",
+  "description": "Arsip dan data BPD Desa Baleharjo, Kec. Sukodono, Kab. Sragen",
+  "lang": "id",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#04364f",
+  "theme_color": "#04364f",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

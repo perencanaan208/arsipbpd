@@ -18,3 +18,13 @@ URL web app tidak berubah selama Anda mengedit deployment yang sama.
 ## Keamanan
 Dengan akses "Anyone", siapa pun yang memiliki link bisa membuka dan mengubah data. Jangan bagikan link
 sembarangan. Jika perlu, minta ditambahkan PIN/login di aplikasi.
+
+## PWA (bisa di-install dengan ikon E-ARSIP BPD)
+File yang ditambahkan: `manifest.webmanifest`, `sw.js`, `favicon.ico`, dan folder `icons/`.
+Setelah deploy ke Vercel:
+- **PC (Chrome/Edge):** buka situsnya, klik ikon install di ujung kanan address bar (atau menu ⋮ → *Install E-Arsip BPD*).
+- **Android (Chrome):** menu ⋮ → *Install app* / *Tambahkan ke layar utama*.
+- **iPhone (Safari):** tombol Share → *Add to Home Screen* (memakai `apple-touch-icon.png`).
+
+Jika sebelumnya sudah pernah dipasang dengan ikon lama, hapus dulu aplikasinya lalu install ulang agar ikon baru muncul.
+Catatan: aplikasi tetap membutuhkan internet karena isinya dimuat dari Apps Script.
